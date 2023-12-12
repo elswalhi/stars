@@ -7,9 +7,14 @@
     </listeners>
     <test name="stars Dashboard" >
         <classes>
-            <class name="Dashboard.Categories">
+            <class name="Dashboard.Service">
+
                 <methods>
-                    <exclude name="deleteCategory"/>
+<!--                    <include name="deleteCategory"/>-->
+                    <include name="navigate_To_Service"/>
+                    <include name="deleteService"/>
+                    <include name="RestoreService"/>
+<!--                    <include name="create_Service"/>-->
                 </methods>
             </class>
         </classes>
