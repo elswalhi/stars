@@ -19,7 +19,6 @@ public class Categories extends TestBase {
     }
     @Test(priority = 0)
     public void navigate_To_Categories(){
-//        href="http://stars.neop.co/admin/categories/1/edit"
         WebElement categoriesLink = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/categories']"));
         categoriesLink.click();
         String expectedResult="http://stars.neop.co/admin/categories";

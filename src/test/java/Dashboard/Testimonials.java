@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 
-public class Projects extends TestBase {
+public class Testimonials extends TestBase {
+
     @BeforeClass
     public void init() throws InterruptedException {
         initialization();
@@ -22,56 +23,38 @@ public class Projects extends TestBase {
         Teardown();
     }
     @Test(priority = 0)
-    public void navigate_To_Projects(){
+    public void navigate_To_Testimonials(){
 //        href="http://stars.neop.co/admin/projects/1/edit"
-        WebElement categoriesLink = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/projects']"));
+        WebElement categoriesLink = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/testimonials']"));
         categoriesLink.click();
-        String expectedResult="http://stars.neop.co/admin/projects";
+        String expectedResult="http://stars.neop.co/admin/testimonials";
         String actualResult = driver.getCurrentUrl();
         Assert.assertEquals(actualResult,expectedResult);
     }
     @Test(priority = 1)
-    public void create_projects() throws InterruptedException {
+    public void create_Testimonials() throws InterruptedException {
         WebElement addProjectsLink = driver.findElement(By.xpath("/html[1]/body[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/p[1]/a[1]/button[1]"));
         Thread.sleep(100);
         addProjectsLink.click();
         Thread.sleep(100);
         WebElement name_en = driver.findElement(By.id("name_en"));
         WebElement name_ar = driver.findElement(By.id("name_ar"));
-        WebElement brief_ar = driver.findElement(By.id("brief_ar"));
-        WebElement brief_en = driver.findElement(By.id("brief_en"));
+        WebElement description_ar = driver.findElement(By.id("description_ar"));
+        WebElement description_en = driver.findElement(By.id("description_en"));
+        WebElement rate = driver.findElement(By.id("rate"));
         File uploadFile = new File("src/test/java/Dashboard/test.jpg");
         WebElement image = driver.findElement(By.id("image"));
         Thread.sleep(100);
-        name_en.sendKeys("TestProjects 4");
+        name_en.sendKeys("Testtestimonials 4");
         Thread.sleep(100);
-        name_ar.sendKeys("اختبار المشاريع 4");
+        name_ar.sendKeys("اختبار  4");
         Thread.sleep(100);
-        brief_ar.sendKeys("اختبار");
-        brief_en.sendKeys("test");
+        rate.sendKeys("4");
+        Thread.sleep(100);
+        description_ar.sendKeys("اختبار");
+        description_en.sendKeys("test");
         image.sendKeys(uploadFile.getAbsolutePath());
-        WebElement selectElement = driver.findElement(By.tagName("select"));
-        // Create a Select object by wrapping the WebElement
-        Select select = new Select(selectElement);
-        Thread.sleep(100);
-        // You can now interact with the <select> element using methods provided by the Select class
-        // Select by index (index starts from 0)
-        select.selectByIndex(0);
         Thread.sleep(500);
-        WebElement description_ar_ifr = driver.findElement(By.id("description_ar_ifr"));
-        driver.switchTo().frame(description_ar_ifr);
-        WebElement editableElementAR = driver.findElement(By.tagName("p"));
-        Thread.sleep(500);
-        editableElementAR.sendKeys("اختبااااار");
-        Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        WebElement description_en_ifr = driver.findElement(By.id("description_en_ifr"));
-        driver.switchTo().frame(description_en_ifr);
-        WebElement editableElementEn = driver.findElement(By.tagName("p"));
-        Thread.sleep(500);
-        editableElementEn.sendKeys("Teest");
-        driver.switchTo().defaultContent();
-        Thread.sleep(100);
         WebElement saveBtn= driver.findElement(By.id("save"));
         Thread.sleep(100);
         Actions actions = new Actions(driver);
@@ -81,8 +64,8 @@ public class Projects extends TestBase {
         Assert.assertTrue(Success.isDisplayed());
     }
     @Test(priority = 2)
-    public void deleteProjects() throws InterruptedException {
-        driver.navigate().to("http://stars.neop.co/admin/projects");
+    public void deleteTestimonials() throws InterruptedException {
+        driver.navigate().to("http://stars.neop.co/admin/testimonials");
         Thread.sleep(1000);
         WebElement deleteBtn = driver.findElement(By.cssSelector("tr:nth-child(1) td.text-sm.font-weight-normal:nth-child(5) div:nth-child(2) button.btn.btn-icon.btn-2.btn-danger > span.btn-inner--text"));
         Thread.sleep(500);
@@ -101,8 +84,8 @@ public class Projects extends TestBase {
         Assert.assertTrue(Success.isDisplayed());
     }
     @Test(priority = 3)
-    public void RestoreProjects() throws InterruptedException {
-        driver.navigate().to("http://stars.neop.co/admin/projects");
+    public void RestoreTestimonials() throws InterruptedException {
+        driver.navigate().to("http://stars.neop.co/admin/testimonials");
         Thread.sleep(1000);
         WebElement RestoreBtn = driver.findElement(By.cssSelector("button.btn.btn-icon.btn-2.btn-primary > span.btn-inner--text"));
         Thread.sleep(500);
@@ -120,66 +103,41 @@ public class Projects extends TestBase {
         Assert.assertTrue(Success.isDisplayed());
     }
     @Test(priority = 4)
-    public void editProjects() throws InterruptedException {
-        driver.navigate().to("http://stars.neop.co/admin/projects");
+    public void editTestimonials() throws InterruptedException {
+        driver.navigate().to("http://stars.neop.co/admin/testimonials");
         Thread.sleep(1000);
-        WebElement editBtn = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/projects/2/edit']"));
+        WebElement editBtn = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/testimonials/1/edit']"));
         Thread.sleep(1000);
         editBtn.click();
 
         WebElement name_en = driver.findElement(By.id("name_en"));
         WebElement name_ar = driver.findElement(By.id("name_ar"));
-        WebElement brief_ar = driver.findElement(By.id("brief_ar"));
-        WebElement brief_en = driver.findElement(By.id("brief_en"));
+        WebElement description_ar = driver.findElement(By.id("description_ar"));
+        WebElement description_en = driver.findElement(By.id("description_en"));
+        WebElement rate = driver.findElement(By.id("rate"));
         name_ar.clear();
         name_en.clear();
-        brief_ar.clear();
-        brief_en.clear();
+        description_en.clear();
+        description_ar.clear();
+        rate.clear();
         File uploadFile = new File("src/test/java/Dashboard/test.jpg");
         WebElement image = driver.findElement(By.id("image"));
         Thread.sleep(100);
-        name_en.sendKeys("TestService 4");
+        name_en.sendKeys("Testtestimonials 4");
         Thread.sleep(100);
-        name_ar.sendKeys("اختبار الخدمات 4");
+        name_ar.sendKeys("اختبار  4");
         Thread.sleep(100);
-        brief_ar.sendKeys("اختبار");
-        brief_en.sendKeys("test");
+        rate.sendKeys("4");
+        Thread.sleep(100);
+        description_ar.sendKeys("اختبار");
+        description_en.sendKeys("test");
         image.sendKeys(uploadFile.getAbsolutePath());
-        WebElement selectElement = driver.findElement(By.tagName("select"));
-        // Create a Select object by wrapping the WebElement
-        Select select = new Select(selectElement);
-        Thread.sleep(100);
-        // You can now interact with the <select> element using methods provided by the Select class
-        // Select by index (index starts from 0)
-        select.selectByIndex(0);
         Thread.sleep(500);
-        WebElement description_ar_ifr = driver.findElement(By.id("description_ar_ifr"));
-        driver.switchTo().frame(description_ar_ifr);
-        WebElement editableElementAR = driver.findElement(By.tagName("p"));
-        editableElementAR.clear();
-        Thread.sleep(500);
-        editableElementAR.sendKeys("اختبااااار");
-        Thread.sleep(500);
-        driver.switchTo().defaultContent();
-        WebElement description_en_ifr = driver.findElement(By.id("description_en_ifr"));
-        driver.switchTo().frame(description_en_ifr);
-        WebElement editableElementEn = driver.findElement(By.tagName("p"));
-        editableElementEn.clear();
-        Thread.sleep(500);
-        editableElementEn.sendKeys("Teest");
-        driver.switchTo().defaultContent();
-        Thread.sleep(100);
         WebElement saveBtn= driver.findElement(By.id("save"));
         Thread.sleep(100);
-        // Create a Select object by wrapping the WebElement
-        Thread.sleep(100);
-        // You can now interact with the <select> element using methods provided by the Select class
-        // Select by index (index starts from 0)
-        select.selectByIndex(0);
-        Thread.sleep(100);
-        Actions actions =new Actions(driver);
+        Actions actions = new Actions(driver);
         actions.moveToElement(saveBtn).click().build().perform();
-        Thread.sleep(1500);
+        Thread.sleep(500);
         WebElement Success = driver.findElement(By.cssSelector(".fl-success"));
         Assert.assertTrue(Success.isDisplayed());
     }

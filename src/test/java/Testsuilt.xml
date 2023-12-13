@@ -1,26 +1,18 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
+<suite name="Start Dashboard" verbose="1" >
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
         <listener class-name="Listeners.MyTestListener"/>
     </listeners>
     <test name="stars Dashboard" >
         <classes>
-            <class name="Dashboard.Teams">
-
-                <methods>
-                    <exclude name="create_Teams"/>
-<!--                    <include name="deleteCategory"/>-->
-<!--                    <include name="navigate_To_Service"/>-->
-<!--                    <include name="deleteService"/>-->
-<!--                    <include name="RestoreService"/>-->
-<!--                    <include name="editService"/>-->
-<!--                    <include name="create_Service"/>-->
-                </methods>
-            </class>
+<!--            <class name="Dashboard.Categories"/>-->
+            <class name="Dashboard.Service"/>
+<!--            <class name="Dashboard.Projects"/>-->
+<!--            <class name="Dashboard.Products"/>-->
+<!--            <class name="Dashboard.Teams"/>-->
+<!--            <class name="Dashboard.Testimonials"/>-->
         </classes>
     </test>
-
-
 </suite>

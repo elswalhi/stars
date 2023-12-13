@@ -123,7 +123,7 @@ public class Service extends TestBase {
     public void editService() throws InterruptedException {
         driver.navigate().to("http://stars.neop.co/admin/services");
         Thread.sleep(1000);
-        WebElement editBtn = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/services/1/edit']"));
+        WebElement editBtn = driver.findElement(By.xpath("//a[@href='http://stars.neop.co/admin/services/5/edit']"));
         Thread.sleep(1000);
         editBtn.click();
 
@@ -132,7 +132,7 @@ public class Service extends TestBase {
         WebElement brief_ar = driver.findElement(By.id("brief_ar"));
         WebElement brief_en = driver.findElement(By.id("brief_en"));
         name_ar.clear();
-        name_ar.clear();
+        name_en.clear();
         brief_ar.clear();
         brief_en.clear();
         File uploadFile = new File("src/test/java/Dashboard/test.jpg");
@@ -174,7 +174,7 @@ public class Service extends TestBase {
         Thread.sleep(100);
         // You can now interact with the <select> element using methods provided by the Select class
         // Select by index (index starts from 0)
-        select.selectByIndex(2);
+        select.selectByIndex(0);
         Thread.sleep(100);
         Actions actions =new Actions(driver);
         actions.moveToElement(saveBtn).click().build().perform();
